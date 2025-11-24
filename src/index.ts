@@ -1,11 +1,37 @@
-function desejarBoasVindas(nome: string, idade: string, telefoneFixo?: string) {
-    if (telefoneFixo) {
-        console.log(`Bem vindo ${nome}, voce tem ${idade} anos de idade e seu telefone fixo e ${telefoneFixo}`)
-    } else {
-        console.log(`Bem vindo ${nome}, voce tem ${idade} anos de idade`)
+interface enderecoProps {
+    cep: string
+    rua: string
+    numero: string
+    bairro: string
+}
+
+interface pacienteProps {
+    nome: string
+    idade: string
+    readonly cpf: string
+    internado: boolean
+    endereco?: enderecoProps
+}
+
+const pacienteUm: pacienteProps = {
+    nome: "Pedro",
+    idade: "20",
+    cpf: "12345678-00",
+    internado: true,
+    endereco: {
+        cep: "00000-00",
+        rua: "Rua teste",
+        numero: "000",
+        bairro: "Teste"
     }
 }
 
-const mensagemBoasVindas = desejarBoasVindas("Pedro", "20", "324002-8922")
+const pacienteDois: pacienteProps = {
+    nome: "Bruno",
+    idade: "20",
+    cpf: "12345678-01",
+    internado: false
+}
 
-console.log(mensagemBoasVindas)
+console.log(pacienteUm)
+console.log(pacienteDois)
