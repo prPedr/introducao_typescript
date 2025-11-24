@@ -1,37 +1,34 @@
-interface enderecoProps {
-    cep: string
-    rua: string
-    numero: string
-    bairro: string
-}
-
-interface pacienteProps {
+interface pessoaProps {
     nome: string
-    idade: string
-    readonly cpf: string
-    internado: boolean
-    endereco?: enderecoProps
+    dizerOi(): void
 }
 
-const pacienteUm: pacienteProps = {
-    nome: "Pedro",
-    idade: "20",
-    cpf: "12345678-00",
-    internado: true,
-    endereco: {
-        cep: "00000-00",
-        rua: "Rua teste",
-        numero: "000",
-        bairro: "Teste"
+class Medico implements pessoaProps {
+    nome: string
+
+    constructor(nome: string) {
+        this.nome = nome
+    }
+
+    dizerOi(): void {
+        console.log(`Boa tarde, me chamdo ${this.nome} e serei seu medico`)
     }
 }
 
-const pacienteDois: pacienteProps = {
-    nome: "Bruno",
-    idade: "20",
-    cpf: "12345678-01",
-    internado: false
+class Enfermeiro implements pessoaProps {
+    nome: string
+
+    constructor(nome: string) {
+        this.nome = nome
+    }
+
+    dizerOi(): void {
+        console.log(`Boa tarde, me chamdo ${this.nome} e serei seu enfermeiro`)
+    }
 }
 
-console.log(pacienteUm)
-console.log(pacienteDois)
+const newMedico = new Medico("Pedro")
+newMedico.dizerOi()
+
+const newEnfermeiro = new Enfermeiro("Gabriel")
+newEnfermeiro.dizerOi()
